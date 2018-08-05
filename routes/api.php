@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/player/login', "PlayerController@login");
+Route::post('/player/register', "PlayerController@register");
+Route::get('/player/resetpassword', "PlayerController@resetPassword");
+Route::get('/player/{id}', "PlayerController@getPlayerById");
+
