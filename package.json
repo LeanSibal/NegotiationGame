@@ -1,35 +1,16 @@
 {
-  "name": "NegotiationGame",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-	"start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LeanSibal/NegotiationGame.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LeanSibal/NegotiationGame/issues"
-  },
-  "homepage": "https://github.com/LeanSibal/NegotiationGame#readme",
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.2",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "prop-types": "^15.6.2",
+  "name": "redux-cra",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "react-scripts": "1.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
