@@ -1,0 +1,53 @@
+.game-room{
+
+  .heading{
+    text-align: center;
+
+    h5 {
+      color: #FFFFFF;
+      margin: 20px;
+    }
+  }
+
+  .search{
+    margin: 50px 0px 0px;
+  }
+
+  .player-list{
+    width: 100%;
+
+    .table{
+      tr{
+        background: #FFFFFF;
+
+        td{
+          span{
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    .img-circle{
+      width: 40px;
+      @include border-radius(20px)
+    }
+  }
+
+  .remove{
+    border: 0px;
+    background: none;
+    outline: none;
+    cursor: pointer;
+
+    .fa{
+      color:$primary-button-color;
+    }
+  }
+
+  .start-game{
+    padding: 12px 30px;
+    font-size: 12px;
+    @include border-radius(25px);
+  }
+}

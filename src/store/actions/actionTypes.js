@@ -1,0 +1,11 @@
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+
+export const GAME_TYPE_SELECTED = 'GAME_TYPE_SELECTED';
+
+export const GAME_STATE_WAITING = 'GAME_STATE_WAITING';
+export const GAME_STATE_PLAYING = 'GAME_STATE_PLAYING';
+export const GAME_STATE_CLOSED = 'GAME_STATE_CLOSED';
+

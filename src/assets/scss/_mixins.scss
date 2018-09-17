@@ -1,0 +1,19 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+@mixin center-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 24em;
+}
+
+@mixin user-select($val: none){
+  user-select: $val;
+  -moz-user-select: $val;
+  -webkit-user-select: $val;
+  -ms-user-select: $val;
+}
