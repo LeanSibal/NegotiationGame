@@ -8,6 +8,8 @@ export {
     gameTypeSelected,
     checkGame,
     removePlayer,
-    searchPlayer
+    searchPlayer,
+    updatePlayerGameId,
+    getPlayerCollection
 
 } from './game';

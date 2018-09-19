@@ -89,6 +89,7 @@ const config = {
 
         noParse: /jquery/
     },
+    
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({

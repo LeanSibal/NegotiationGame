@@ -20,6 +20,7 @@ class App extends Component {
                         ? <Login />
                         : <Dashboard />
                     }
+                    {this.props.userToken}
                 </Layout>
             </div>
         );
@@ -27,6 +28,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+
     return {
         isAuthenticated: state.userToken !== null
     }

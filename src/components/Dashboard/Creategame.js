@@ -36,30 +36,32 @@ class creategame extends  Component {
 
     submitGameType(){
 
-        var data = {
+        let isReady = 1;
+        let playerData = {};
+        playerData[this.props.userId] = {
+            'player_id' : this.props.userId,
+            'display_name' : this.props.displayName,
+            'email' : this.props.userEmail,
+            'photo_url' : this.props.userPhoto,
+            'is_ready' : isReady
+        };
+        var gameData = {
             'player_count' : this.state.gameType,
             'status' : 'waiting',
-            'players' : [
-                {
-                    'player_id' : this.props.userId,
-                    'display_name' : 1,
-                    'email' : 1,
-                    'photo_url' : 1,
-                    'is_ready' : 1
-                }
-            ],
+            'players' : playerData,
             'messages' : {
             }
         };
-        console.log(this.state.gameType);
+       
         var propState = this;
-      /*  firebase.database().ref('games').push(data).then(function(snapshot) {
+       firebase.database().ref('games').push(gameData).then(function(snapshot) {
             var key = snapshot.key;
 
             if(key !== null){
-                propState.props.sendGameType(propState.state.gameType, key);
+                propState.props.sendGameType(propState.state.gameType, key, playerData);
+                propState.props.updatePlayerGameId(propState.props.userId,key);
             }
-        });*/
+        });
     };
 
     render() {
@@ -95,13 +97,17 @@ class creategame extends  Component {
 }
 const mapStateToProps = state => {
     return {
-        userId: state.userId
+        userId: state.userId,
+        displayName: state.displayName,
+        userPhoto: state.userPhoto,
+        userEmail: state.userEmail
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        sendGameType : (value, gameId) => dispatch(actions.gameTypeSelected(value, gameId))
+        sendGameType : (value, gameId, playerData) => dispatch(actions.gameTypeSelected(value, gameId, playerData)),
+        updatePlayerGameId : (userId,gameId) => dispatch(actions.updatePlayerGameId(userId,gameId))
     };
 };
 

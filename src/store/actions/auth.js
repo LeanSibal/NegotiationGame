@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actionType from './actionTypes';
+import * as  firebaseConfig from '../../firebaseConfig';
 
 export const authStart = () => {
     return {
@@ -8,10 +9,11 @@ export const authStart = () => {
 };
 
 export const authSuccess = (userToken, userId) => {
+
     return {
         type : actionType.AUTH_SUCCESS,
         userToken: userToken,
-        userId: userId
+        userId: userId,
     }
 };
 
@@ -39,7 +41,7 @@ export const auth = (email, password) => {
             returnSecureToken: true
         }
 
-        const apiKey = 'AIzaSyBNtHeWML1zkAMRzaoVytTpX5dzIpChoIg';
+        const apiKey =  firebaseConfig.config.apiKey;
         const requestUrl = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' + apiKey;
 
         axios.post(requestUrl,authData)
@@ -51,12 +53,33 @@ export const auth = (email, password) => {
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', res.data.localId);
                 dispatch(authSuccess(res.data.idToken, res.data.localId));
+                dispatch(fetchPlayerProfile(res.data.localId));
             })
             .catch(res => {
                 dispatch(authFail(res));
             });
 
     };
+};
+
+export  const playerProfile = (res) => {
+    return {
+        type: actionType.PLAYER_PROFILE,
+        displayName:res.name,
+        thumbnail: res.thumbnail,
+        userEmail: res.email,
+        currentGameId: res.current_game_id
+    };
+};
+
+export const fetchPlayerProfile = (userId) => {
+    return dispatch => {
+        let firebaseUrl =  firebaseConfig.config.databaseURL;
+        axios.get(firebaseUrl + '/users/' + userId + '.json')
+            .then(res => {
+                dispatch(playerProfile(res.data));
+            });
+    }
 };
 
 export const authCheckState = () => {
@@ -71,6 +94,7 @@ export const authCheckState = () => {
             }else{
                 const userId = localStorage.getItem('userId');
                 dispatch(authSuccess(userToken,userId));
+                dispatch(fetchPlayerProfile(userId));
             }
         }
     };

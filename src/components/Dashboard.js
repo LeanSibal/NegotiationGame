@@ -28,8 +28,6 @@ class dashboard extends  Component {
         return (
             <Aux>
                 <div className="dashboard">
-
-                    {this.state.gameState}
                     {this.props.gameState === 'waiting' &&
                         <Room />
                     }
@@ -45,7 +43,8 @@ class dashboard extends  Component {
 const mapStateToProps = state => {
     return {
         gameId: state.gameId,
-        gameState: state.gameState
+        gameState: state.gameState,
+        displayName: state.displayName
     }
 };
 

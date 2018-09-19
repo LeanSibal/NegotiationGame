@@ -1,17 +1,19 @@
 import * as actionType from './actionTypes';
 import axios from 'axios';
+import * as  firebaseConfig from '../../firebaseConfig';
 
-export const gameTypeSelect = (value) => {
+export const gameTypeSelect = (value, gameId, playerData) => {
    return {
        type : actionType.GAME_TYPE_SELECTED,
-       noOfPlayer : value
+       noOfPlayer : value,
+       gameId: gameId,
+       players: playerData
    };
 };
 
-export const gameTypeSelected = (value, gameId) => {
-
+export const gameTypeSelected = (value, gameId, playerData) => {
     return dispatch => {
-       dispatch(gameTypeSelect(value));
+       dispatch(gameTypeSelect(value, gameId, playerData));
         localStorage.setItem('gameId', gameId);
     }
 };
@@ -29,16 +31,14 @@ export const waitingRoom = (gameId, players, gameState, playerCount) => {
 
 export const searchPlayer = (terms) => {
     return dispatch => {
-        console.log(terms);
     }
 };
 
 export const removePlayer = (gameId,playerKey) => {
-    console.log(playerKey);
     return dispatch => {
 
-        let firebaseUrl = 'https://negotiation-game.firebaseio.com';
-        let refPlayer = '/players/' + playerKey + '/current_game_id.json';
+        let firebaseUrl = firebaseConfig.config.databaseURL;
+        let refPlayer = '/users/' + playerKey + '/current_game_id.json';
         let refGame = '/games/' + gameId + '/players/' + playerKey + '.json';
 
         axios.delete(firebaseUrl + refPlayer).then(res =>{
@@ -53,13 +53,50 @@ export const removePlayer = (gameId,playerKey) => {
     }
 }
 
+export const updatePlayerGameId = (userId, gameId) => {
+    return dispatch => {
+        let firebaseUrl = firebaseConfig.config.databaseURL;
+        let refPlayer = '/users/' + userId + '.json';
+
+        let data = {
+            'current_game_id':gameId
+        };
+
+        axios.patch(firebaseUrl + refPlayer, data).then(res =>{
+        }).catch(error => {
+
+        });
+    }
+};
+
 export const checkGame = (gameId, snapshot) => {
     return dispatch => {
 
         var gameState = snapshot.child('status').val();
         var players = snapshot.child('players').val();
         var playerCount = snapshot.child('player_count').val();
-
         dispatch(waitingRoom(gameId, players, gameState, playerCount))
+    }
+};
+
+
+export const actionPlayerCollection = (result ) => {
+
+    let collection = [];
+    Object.values(result).map(function(values){
+       collection.push(values);
+    });
+    return {
+        type: actionType.PLAYER_COLLECTION,
+        playerCollection: collection
+    }
+}
+
+export const getPlayerCollection = () => {
+    return dispatch => {
+        axios.get(firebaseConfig.config.databaseURL + '/users.json')
+            .then(res => {
+                dispatch(actionPlayerCollection(res.data));
+            });
     }
 };

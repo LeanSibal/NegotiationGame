@@ -35,12 +35,17 @@ class PlayerList  extends Component {
                                 <tbody>
                                    <tr>
                                        <td className="align-middle" width="10%"><span>{i + 1}</span></td>
-                                       <td className="align-middle" width="20%"><span><img className="img-circle" src={players[key].thumbnail}/></span></td>
+                                       <td className="align-middle" width="20%"><span><img className="img-circle" src={players[key].photo_url}/></span></td>
                                        <td className="align-middle" width="60%"><span>
                                            {this.props.userId === players[key].player_id ? 'Me' : players[key].display_name }
                                        </span></td>
-                                       <td className="align-middle" width="10%"><button className="remove" onClick={() => {this.removePlayer(key)}}  data-key={key}><i className="fa fa-trash-o"></i></button></td>
-                                   </tr>
+                                           <td className="align-middle" width="10%">
+                                               {this.props.userId === players[key].player_id ? '' :
+                                               <button className="remove" onClick={() => {this.removePlayer(key)}}
+                                                       data-key={key}><i className="fa fa-trash-o"></i></button>
+                                               }
+                                               </td>
+                                           </tr>
                                 </tbody>
                            </table>
                        </div>
