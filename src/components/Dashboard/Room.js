@@ -5,14 +5,18 @@ import * as actions from '../../store/actions/index';
 import firebase from '../../firebase';
 import PlayerList from './PlayerList';
 import SearchPlayer from './SearchPlayer';
+import Gameboard from './Gameboard'
 
 class room extends  Component {
 
     constructor(props) {
         super(props);
 
-        this.database = firebase.database();
+        this.state = {
+            gameState: null
+        }
 
+        this.database = firebase.database();
     }
 
     componentDidMount() {
@@ -20,14 +24,17 @@ class room extends  Component {
         this.database.ref('games/' + $root.props.gameId).on('value', function (snapshot) {
             if(snapshot.hasChild('status')){
                 $root.props.checkGame($root.props.gameId, snapshot);
+                $root.setState({
+                    gameState: snapshot.child('status').val()
+                })
             }
         })
-        
     }
 
     render() {
         return (
             <Aux>
+                {this.state.gameState === 'waiting' &&
                 <div className="game-room">
                     <div className="row">
                         <div className="col-md-12 heading">
@@ -37,7 +44,7 @@ class room extends  Component {
                     </div>
                     <div className="row">
                         {this.props.isServer &&
-                            <SearchPlayer />
+                        <SearchPlayer />
                         }
                     </div>
                     <div className="row">
@@ -46,17 +53,22 @@ class room extends  Component {
                     <div className="row">
                         <div className="col-sm-12 text-center text-uppercase">
                             {this.props.isServer &&
-                                <button className="start-game" disabled={!this.props.enableStartGameButton}>START GAME</button>
+                            <button className="start-game" disabled={!this.props.enableStartGameButton}>START
+                                GAME</button>
                             }
-                            </div>
+                        </div>
                     </div>
                 </div>
+                }
+                {this.state.gameState === 'playing' &&
+                    <Gameboard />
+                }
             </Aux>
         )
     }
 }
 
-const mapStateToPros = state => {
+const mapStateToProps = state => {
 
     return {
         enableStartGameButton: Object.keys(state.players).length == state.gameType,
@@ -70,4 +82,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToPros, mapDispatchToProps)(room);
+export default connect(mapStateToProps, mapDispatchToProps)(room);

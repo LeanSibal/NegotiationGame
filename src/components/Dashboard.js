@@ -13,7 +13,8 @@ class dashboard extends  Component {
         this.state = {
             gameState : null,
             hasGameId: false,
-            gameId: props.gameId
+            gameId: props.gameId,
+            isLoading: true
         };
 
         this.database = firebase.database();
@@ -26,7 +27,8 @@ class dashboard extends  Component {
         this.database.ref('users/' + userId).on('value', function (snapshot) {
             root.setState({
                 hasGameId: snapshot.hasChild('current_game_id'),
-                gameId: snapshot.child('current_game_id').val()
+                gameId: snapshot.child('current_game_id').val(),
+                isLoading: false
             })
         })
     }
@@ -36,10 +38,10 @@ class dashboard extends  Component {
         return (
             <Aux>
                 <div className="dashboard">
-                    {this.state.hasGameId &&
+                    {this.state.hasGameId && !this.state.isLoading &&
                         <Room gameId={this.state.gameId}/>
                     }
-                    {!this.state.hasGameId &&
+                    {!this.state.hasGameId && !this.state.isLoading &&
                         <Creategame />
                     }
                 </div>

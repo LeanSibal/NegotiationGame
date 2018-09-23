@@ -12,6 +12,10 @@ const initialState = {
     gameType : null,
     gameId : null,
     gameState : null,
+
+    gameScore: 500,
+    gameRound: 5,
+    
     players: null,
     playerCollection: null,
     firstPlayerId: null
@@ -43,7 +47,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 gameType: action.noOfPlayer,
                 gameState: action.gameState,
-                gameId: action.gameId, 
+                gameId: action.gameId,
                 players: action.players,
                 userId: state.userId,
                 firstPlayerId: action.firstPlayerId

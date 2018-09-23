@@ -14,7 +14,7 @@ body {
 #root{
   .app{
 
-    @include center-children;
+    //@include center-children;
 
     .error {
       color:$primary-error;
