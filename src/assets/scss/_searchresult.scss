@@ -1,0 +1,20 @@
+.search{
+  position: relative;
+}
+.search-result{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+
+  ul.list-group{
+
+    .list-group-item{
+      .img{
+        width: 40px;
+        @include border-radius(20px)
+      }
+    }
+  }
+
+
+}

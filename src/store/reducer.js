@@ -13,7 +13,8 @@ const initialState = {
     gameId : null,
     gameState : null,
     players: null,
-    playerCollection: null
+    playerCollection: null,
+    firstPlayerId: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -42,9 +43,10 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 gameType: action.noOfPlayer,
                 gameState: action.gameState,
-                gameId: action.gameId,
+                gameId: action.gameId, 
                 players: action.players,
-                userId: state.userId
+                userId: state.userId,
+                firstPlayerId: action.firstPlayerId
             }
         case actionType.PLAYER_PROFILE:
             return {
@@ -58,6 +60,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 playerCollection: action.playerCollection
+            }
+        case actionType.UPDATE_PLAYER_LIST:
+
+            let newData = {};
+            let key = action.key;
+            let playerData = action.playerData;
+             newData[key] = playerData;
+            return {
+                ...state,
+                players: Object.assign(state.players, newData,)
+
             }
         default:
             return state;

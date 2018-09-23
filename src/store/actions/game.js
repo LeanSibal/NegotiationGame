@@ -18,27 +18,18 @@ export const gameTypeSelected = (value, gameId, playerData) => {
     }
 };
 
-export const waitingRoom = (gameId, players, gameState, playerCount) => {
-    return {
-        type: actionType.GAME_STATE_WAITING,
-        noOfPlayer:playerCount,
-        gameState: gameState,
-        gameId: gameId,
-        players:players
+export const updatePlayerList = (playerData, key) => {
+    return  {
+        type : actionType.UPDATE_PLAYER_LIST,
+        playerData: playerData,
+        key: key
     }
-};
+}
 
-
-export const searchPlayer = (terms) => {
+export const removePlayer = (gameId,playerKey, playerId) => {
     return dispatch => {
-    }
-};
-
-export const removePlayer = (gameId,playerKey) => {
-    return dispatch => {
-
         let firebaseUrl = firebaseConfig.config.databaseURL;
-        let refPlayer = '/users/' + playerKey + '/current_game_id.json';
+        let refPlayer = '/users/' + playerId + '/current_game_id.json';
         let refGame = '/games/' + gameId + '/players/' + playerKey + '.json';
 
         axios.delete(firebaseUrl + refPlayer).then(res =>{
@@ -79,6 +70,19 @@ export const checkGame = (gameId, snapshot) => {
     }
 };
 
+export const waitingRoom = (gameId, players, gameState, playerCount) => {
+
+    let firstPlayerkey = Object.keys(players)[0];
+    let firstPlayerId = players[firstPlayerkey].player_id;
+    return {
+        type: actionType.GAME_STATE_WAITING,
+        noOfPlayer:playerCount,
+        gameState: gameState,
+        gameId: gameId,
+        players:players,
+        firstPlayerId: firstPlayerId
+    }
+};
 
 export const actionPlayerCollection = (result ) => {
 

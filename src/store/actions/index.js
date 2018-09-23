@@ -8,8 +8,9 @@ export {
     gameTypeSelected,
     checkGame,
     removePlayer,
-    searchPlayer,
     updatePlayerGameId,
-    getPlayerCollection
+    getPlayerCollection,
+    updatePlayerList,
+    waitingRoom
 
 } from './game';

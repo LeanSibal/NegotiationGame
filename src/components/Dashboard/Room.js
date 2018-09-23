@@ -11,8 +11,19 @@ class room extends  Component {
     constructor(props) {
         super(props);
 
+        this.database = firebase.database();
+
     }
 
+    componentDidMount() {
+        var $root = this;
+        this.database.ref('games/' + $root.props.gameId).on('value', function (snapshot) {
+            if(snapshot.hasChild('status')){
+                $root.props.checkGame($root.props.gameId, snapshot);
+            }
+        })
+        
+    }
 
     render() {
         return (
@@ -25,15 +36,19 @@ class room extends  Component {
                         </div>
                     </div>
                     <div className="row">
-                       <SearchPlayer />
+                        {this.props.isServer &&
+                            <SearchPlayer />
+                        }
                     </div>
                     <div className="row">
                         <PlayerList />
                     </div>
                     <div className="row">
                         <div className="col-sm-12 text-center text-uppercase">
-                            <button className="start-game">START GAME</button>
-                        </div>
+                            {this.props.isServer &&
+                                <button className="start-game" disabled={!this.props.enableStartGameButton}>START GAME</button>
+                            }
+                            </div>
                     </div>
                 </div>
             </Aux>
@@ -41,6 +56,18 @@ class room extends  Component {
     }
 }
 
+const mapStateToPros = state => {
 
+    return {
+        enableStartGameButton: Object.keys(state.players).length == state.gameType,
+        isServer: state.firstPlayerId === state.userId
+    }
+}
 
-export default room;
+const mapDispatchToProps = dispatch => {
+    return {
+        checkGame: (gameId, snapshot) => dispatch(actions.checkGame(gameId,  snapshot))
+    };
+};
+
+export default connect(mapStateToPros, mapDispatchToProps)(room);

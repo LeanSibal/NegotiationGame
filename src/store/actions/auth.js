@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actionType from './actionTypes';
 import * as  firebaseConfig from '../../firebaseConfig';
+import * as actions from './index';
 
 export const authStart = () => {
     return {
@@ -78,9 +79,21 @@ export const fetchPlayerProfile = (userId) => {
         axios.get(firebaseUrl + '/users/' + userId + '.json')
             .then(res => {
                 dispatch(playerProfile(res.data));
+                dispatch(fetchPlayerGameInfo(res.data.current_game_id));
             });
     }
 };
+
+export const fetchPlayerGameInfo = (gameId) => {
+    return dispatch => {
+        let firebaseUrl =  firebaseConfig.config.databaseURL;
+        axios.get(firebaseUrl + '/games/' + gameId + '.json')
+            .then(res => {
+                dispatch(actions.waitingRoom(gameId, res.data.players, res.data.status, res.data.player_count));
+            });
+    }
+}
+
 
 export const authCheckState = () => {
     return dispatch => {

@@ -8,7 +8,7 @@ import Layout from './Layout/Layout'
 
 class App extends Component {
 
-    componentDidMount(){
+    componentWillMount(){
        this.props.checkAuth();
     }
 
@@ -18,7 +18,7 @@ class App extends Component {
                 <Layout>
                     {!this.props.isAuthenticated
                         ? <Login />
-                        : <Dashboard />
+                        : <Dashboard  />
                     }
                     {this.props.userToken}
                 </Layout>
@@ -30,6 +30,7 @@ class App extends Component {
 const mapStateToProps = state => {
 
     return {
+        gameId: state.gameId,
         isAuthenticated: state.userToken !== null
     }
 };

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
-
+import Joinplayer from './joinPlayer';
+import Resultplayertag  from './ResultPlayerTag';
 class SearchPlayer  extends Component {
 
     constructor(props) {
@@ -9,7 +10,6 @@ class SearchPlayer  extends Component {
         this.state = {
             searchResult: null
         }
-
     }
 
     componentDidMount() {
@@ -20,7 +20,7 @@ class SearchPlayer  extends Component {
 
         searchElem.on('keyup', function() {
             let $this = $(this);
-            let terms =searchElem.val();
+            let terms = searchElem.val();
 
             if(terms.length < charLimit ){
                 root.setState({
@@ -31,7 +31,7 @@ class SearchPlayer  extends Component {
 
             var reg = new RegExp(terms.split('').join('\\w*').replace(/\W/, ""), 'i');
             let result = root.props.playerCollection.filter(function(user) {
-                if (user.name.match(reg)) {
+                if (user.name.match(reg) && user.uid !== root.props.userId) {
                     return user;
                 }else {
                     return null
@@ -47,26 +47,42 @@ class SearchPlayer  extends Component {
 
     render() {
         return (
-            <div className="col-md-12 search">
-                <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="basic-addon1">Search</span>
+
+            <div className="row search mb-5">
+                <div className="col-sm-12 nopadding">
+                    <div className="input-group">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="basic-addon1">Search</span>
+                        </div>
+                        <input type="text" className="form-control search-player" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
                     </div>
-                    <input type="text" className="form-control search-player" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
                 </div>
-                {this.state.searchResult !== null &&
-                    <div className="col-sm-12">
-                        <ul>
+                <div className="col-sm-12 nopadding">
+                    {this.state.searchResult !== null &&
+                    <div className="search-result">
+                        <ul className="list-group ">
                             {Object.values(this.state.searchResult).map((value, i) => {
                                 return (
-                                    <li key={value.uid}>
-                                        {value.name}
+                                    <li key={value.uid} className="list-group-item">
+                                      <div className="row">
+                                          <div className="col-sm-2"><img className="img" src={value.thumbnail} /></div>
+                                          <div className="col-sm-6">
+                                              <div className="row">
+                                                  <div className="col-sm-12">{value.name}</div>
+                                                  <Resultplayertag playerId={value.uid} />
+                                              </div>
+                                          </div>
+                                          <div className="col-sm-4">
+                                              <Joinplayer playerId={value.uid} playerPhoto={value.thumbnail} playerName={value.name} playerEmail={value.email}  />
+                                          </div>
+                                      </div>
                                     </li>
                                 )
                             })}
                         </ul>
                     </div>
-                }
+                    }
+                </div>
             </div>
         )
     }
@@ -74,7 +90,9 @@ class SearchPlayer  extends Component {
 
 const mapStateToProps = state => {
     return {
-        playerCollection: state.playerCollection
+        playerCollection: state.playerCollection,
+        userId: state.userId,
+        players: state.players
     }
 };
 

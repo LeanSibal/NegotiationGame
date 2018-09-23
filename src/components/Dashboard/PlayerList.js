@@ -11,11 +11,11 @@ class PlayerList  extends Component {
         this.removePlayer = this.removePlayer.bind(this);
     }
 
-      removePlayer(key) {
+      removePlayer(key, playerId) {
 
           let playerKey = key;
           let gameId = this.props.gameId;
-          this.props.removePlayer(gameId,playerKey);
+          this.props.removePlayer(gameId,playerKey, playerId);
     }
 
     componentDidMount() {
@@ -41,8 +41,9 @@ class PlayerList  extends Component {
                                        </span></td>
                                            <td className="align-middle" width="10%">
                                                {this.props.userId === players[key].player_id ? '' :
-                                               <button className="remove" onClick={() => {this.removePlayer(key)}}
-                                                       data-key={key}><i className="fa fa-trash-o"></i></button>
+
+                                               this.props.isServer &&
+                                                    <button className="remove" onClick={() => {this.removePlayer(key, players[key].player_id)}} data-key={key}><i className="fa fa-trash-o"></i></button>
                                                }
                                                </td>
                                            </tr>
@@ -61,13 +62,14 @@ const mapStateToProps = state => {
         gameId: state.gameId,
         gameState: state.gameState,
         players: state.players,
-        userId: state.userId
+        userId: state.userId,
+        isServer: state.firstPlayerId === state.userId,
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        removePlayer: (playerKey, gameId) => dispatch(actions.removePlayer(playerKey, gameId))
+        removePlayer: (playerKey, gameId, playerId) => dispatch(actions.removePlayer(playerKey, gameId, playerId))
     }
 }
 
