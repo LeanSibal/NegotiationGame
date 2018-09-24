@@ -52,6 +52,11 @@ const reducer = (state = initialState, action) => {
                 userId: state.userId,
                 firstPlayerId: action.firstPlayerId
             }
+        case actionType.UPDATE_GAME_STATE:
+            return {
+                ...state,
+                gameScore: action.gameScore
+            }
         case actionType.PLAYER_PROFILE:
             return {
                 ...state,

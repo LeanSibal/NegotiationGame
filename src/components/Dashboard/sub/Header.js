@@ -21,7 +21,7 @@ class Header extends  Component {
                         <span className="align-middle">LEVEL {this.props.gameRound}</span>
                     </div>
                     <div className="col-sm-3">
-                        Scores {this.props.gameScore}
+                        Scores ${this.props.gameScore}
                     </div>
                 </div>
             </Aux>

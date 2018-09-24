@@ -1,0 +1,10 @@
+.player-profile{
+  .img-thumbnail{
+    width:60px;
+    @include border-radius(60px)
+  }
+
+  .score{
+
+  }
+}

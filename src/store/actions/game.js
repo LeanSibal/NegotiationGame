@@ -60,11 +60,25 @@ export const updatePlayerGameId = (userId, gameId) => {
     }
 };
 
+export const updateGameState = (player) =>{
+    return {
+        type: actionType.UPDATE_GAME_STATE,
+        gameScore: player.score
+    }
+}
+
 export const checkGame = (gameId, snapshot) => {
     return dispatch => {
+        let userId = localStorage.getItem('userId');
+        var players = snapshot.child('players').val();
+        Object.values(players).filter(function(player){
+            if(player.player_id === userId){
+                dispatch(updateGameState(player));
+            }
+        });
+
 
         var gameState = snapshot.child('status').val();
-        var players = snapshot.child('players').val();
         var playerCount = snapshot.child('player_count').val();
         dispatch(waitingRoom(gameId, players, gameState, playerCount))
     }

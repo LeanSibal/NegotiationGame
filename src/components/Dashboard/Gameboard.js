@@ -20,12 +20,14 @@ class Gameboard extends  Component {
         return (
             <Aux>
                <Header />
-                {this.props.gameType == 3 &&
+                <div className="game-body">
+                    {this.props.gameType == 3 &&
                     <Threeplayer userId={this.props.userId} players={this.props.players}  />
-                }
-                {this.props.gameType == 5 &&
+                    }
+                    {this.props.gameType == 5 &&
                     <Fiveplayer userId={this.props.userId} players={this.props.players} />
-                }
+                    }
+                </div>
                <Footer />
             </Aux>
         )

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
+import Profile from './Profile';
+import Gametable from './Gametable';
 
 class Threeplayer extends  Component {
 
@@ -33,13 +35,15 @@ class Threeplayer extends  Component {
 
         return (
             <Aux>
-                <div className="row">
+                <div className="container">
                     <div className="col-sm-12">
                         <div className="row">
-                            <div className="col-sm-3"> {newPlayerObject[1]}</div>
-                            <div className="col-sm-6">TABLE</div>
-                            <div className="col-sm-3"> {newPlayerObject[2]}</div>
-                            <div className="col-sm-12"> {this.props.players[newPlayerObject[0]].display_name}</div>
+                            <div className="col-sm-3 text-center"><Profile player={this.props.players[newPlayerObject[1]]} /></div>
+                            <div className="col-sm-6 text-center">
+                                <Gametable players={this.props.players} gameType="3" playerKeys={newPlayerObject} />
+                            </div>
+                            <div className="col-sm-3 text-center"><Profile player={this.props.players[newPlayerObject[2]]} /></div>
+                            <div className="col-sm-12 text-center"> <Profile player={this.props.players[newPlayerObject[0]]} /></div>
                         </div>
                     </div>
                 </div>
