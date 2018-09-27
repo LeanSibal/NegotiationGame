@@ -11,6 +11,7 @@ export {
     updatePlayerGameId,
     getPlayerCollection,
     updatePlayerList,
-    waitingRoom
+    waitingRoom,
+    submitGameAction
 
 } from './game';

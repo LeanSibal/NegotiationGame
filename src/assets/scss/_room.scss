@@ -59,5 +59,77 @@
   }
 }
 .game-body{
-  background: #c7d1cb;
+  background: $game-body-color;
+  padding:50px 0px;
+}
+
+.game-table {
+  border: 5px solid $primary-button-color;
+  @include border-radius(115px);
+  padding: 41px 60px;
+  margin: 20px 0px;
+
+  .player-move{
+
+    .name{
+      font-size: 12px;
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      margin: 0px 0px 10px;
+    }
+
+    .image{
+      display: block;
+      max-width: 80px;
+      min-height: 80px;
+      font-size: 46px;
+      color: #ffffff;
+      margin: auto;
+    }
+    .text{
+      display: block;
+      margin: 10px 0px 0px;
+      text-align: center;
+    }
+    .has-choosen{
+      .image{
+          @include border-radius(10px);
+          border: 5px solid #ffffff;
+      }
+      .text {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+    }
+    .action-T{
+      .image{
+        background: $bgcolor;
+      }
+      .text {
+          color: $bgcolor;
+      }
+    }
+
+    .action-G{
+      .image{
+        background: $secondary-button-color;
+      }
+      .text {
+        color: $secondary-button-color;
+      }
+    }
+    .no-action{
+      .image{
+        background-color: $bgcolor;
+        @include border-radius(5px);
+        border: 2px dotted $game-body-color;
+      }
+      .text {
+        font-size: 14px;
+        color: $bgcolor;
+      }
+    }
+  }
 }

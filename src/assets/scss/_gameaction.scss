@@ -1,0 +1,48 @@
+.game-action{
+
+  .action-label{
+    border: 5px solid #FFFFFF;
+    @include border-radius(5px);
+    @include user-select(none);
+    width: 100%;
+    height: 81px;
+    color: #FFFFFF;
+    font-size: 45px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+
+    &.selected{
+      border-color: #000000;
+    }
+
+    &.ga-t{
+      background: $primary-button-color;
+    }
+
+    &.ga-g{
+    background: $secondary-button-color;
+    }
+  }
+
+  .action-identifier{
+    display: block;
+    @include border-radius(20px);
+    background: #000000;
+    color: $primary-text-color;
+    padding: 8px 0px;
+    font-weight: bold;
+
+  }
+  .blur{
+    opacity: 0.4;
+  }
+}
+.game-footer{
+  background: $game-body-color;
+}

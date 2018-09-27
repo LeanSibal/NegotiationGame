@@ -14,7 +14,9 @@ class Profile extends Component{
         let player = this.props.player;
         return(
             <Aux>
-                <div>{player.display_name}</div>
+                {this.props.userId !== player.player_id &&
+                    <div>{player.display_name}</div>
+                }
                 <figure className="figure player-profile">
                     <img src={player.photo_url} alt="..." className="img-thumbnail" />
                     <img src=".../400x300" className="figure-img img-fluid rounded" alt="" />

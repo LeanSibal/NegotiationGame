@@ -67,13 +67,23 @@ export const updateGameState = (player) =>{
     }
 }
 
+export const updateGameAction = (gameActions) => {
+    console.log(gameActions);
+    return {
+        type: actionType.UPDATE_GAME_ACTION,
+        gameActions: gameActions
+    }
+}
+
 export const checkGame = (gameId, snapshot) => {
     return dispatch => {
         let userId = localStorage.getItem('userId');
         var players = snapshot.child('players').val();
+        var gameActions = snapshot.child('actions').val();
         Object.values(players).filter(function(player){
             if(player.player_id === userId){
                 dispatch(updateGameState(player));
+                dispatch(updateGameAction(gameActions));
             }
         });
 
@@ -118,3 +128,21 @@ export const getPlayerCollection = () => {
             });
     }
 };
+
+export const submitGameAction = (gameId, userId, round, action) => {
+    return dispatch => {
+
+        let actionData = {};
+         actionData = {
+             'action': action,
+             'player_id' : userId
+         };
+
+        let refPlayer = ['/games',gameId, 'actions', round, userId + '.json' ];
+        let firebaseUrl = firebaseConfig.config.databaseURL;
+        axios.patch(firebaseUrl + refPlayer.join('/'), actionData).then(res =>{
+        }).catch(error => {
+
+        });
+    }
+}

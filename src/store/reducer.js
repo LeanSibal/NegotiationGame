@@ -15,6 +15,7 @@ const initialState = {
 
     gameScore: 500,
     gameRound: 5,
+    gameActions: null,
     
     players: null,
     playerCollection: null,
@@ -56,6 +57,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 gameScore: action.gameScore
+            }
+        case actionType.UPDATE_GAME_ACTION:
+            return {
+                ...state,
+                gameActions: action.gameActions
             }
         case actionType.PLAYER_PROFILE:
             return {

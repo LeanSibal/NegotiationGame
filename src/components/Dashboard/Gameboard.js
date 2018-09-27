@@ -20,7 +20,7 @@ class Gameboard extends  Component {
         return (
             <Aux>
                <Header />
-                <div className="game-body">
+                <div className="row game-body">
                     {this.props.gameType == 3 &&
                     <Threeplayer userId={this.props.userId} players={this.props.players}  />
                     }

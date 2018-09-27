@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
 
 class Header extends  Component {
@@ -12,19 +11,19 @@ class Header extends  Component {
 
     render() {
         return (
-            <Aux>
-                <div className="row">
-                    <div className="col-sm-3">
-                        <img src="https://dummyimage.com/60x60/000/fff"/>
+                <header>
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <img src="https://dummyimage.com/60x60/000/fff"/>
+                        </div>
+                        <div className="col-sm-6 align-center">
+                            <span className="align-middle">LEVEL {this.props.gameRound}</span>
+                        </div>
+                        <div className="col-sm-3">
+                            Scores ${this.props.gameScore}
+                        </div>
                     </div>
-                    <div className="col-sm-6 align-center">
-                        <span className="align-middle">LEVEL {this.props.gameRound}</span>
-                    </div>
-                    <div className="col-sm-3">
-                        Scores ${this.props.gameScore}
-                    </div>
-                </div>
-            </Aux>
+                </header>
         )
     }
 }

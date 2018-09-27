@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
+import Gameaction from './Gameaction';
 
 class Footer extends  Component {
 
@@ -11,11 +12,15 @@ class Footer extends  Component {
 
     render() {
         return (
-            <Aux>
-                <div className="row">
-                    <div className="col-sm-12">Footer</div>
+            <footer>
+                <div className="row game-footer">
+                    <div className="col-sm-4 text-center">Settings</div>
+                    <div className="col-sm-4 text-center">
+                        <Gameaction />
+                    </div>
+                    <div className="col-sm-4 text-center">Chat</div>
                 </div>
-            </Aux>
+            </footer>
         )
     }
 }
