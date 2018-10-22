@@ -1,0 +1,37 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+@mixin center-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 24em;
+}
+
+@mixin user-select($val: none){
+  user-select: $val;
+  -moz-user-select: $val;
+  -webkit-user-select: $val;
+  -ms-user-select: $val;
+}
+
+@mixin shadow($val) {
+  -webkit-box-shadow: $val;
+  -moz-box-shadow: $val;
+  box-shadow: $val;
+}
+
+@mixin transform($val) {
+  -webkit-transform: $val;
+      -ms-transform: $val;
+          transform: $val;
+}
+
+@mixin appearance($val) {
+  -webkit-appearance: $val;
+  -moz-appearance:    $val;
+  appearance:         $val;
+}

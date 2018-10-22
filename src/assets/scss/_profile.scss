@@ -1,0 +1,24 @@
+.player-profile{
+  width: 35%;
+
+  .img-thumbnail{
+    width:60px;
+    @include border-radius(60px)
+    @include shadow(-2px 5px 41px -6px rgba(0, 0, 0, 0.48));
+  }
+
+  .score{
+
+  }
+
+  .figure-caption {
+    background: $black;
+    border: 3px solid $secondary-button-color;
+    color: $primary-text-color;
+    font-weight: 900;
+    border-radius: 20px;
+    padding: 3px;
+    top: -10px;
+    position: relative;
+  }
+}

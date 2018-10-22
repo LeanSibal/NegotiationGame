@@ -1,0 +1,86 @@
+.game-action{
+
+  max-width: 300px;
+  margin: auto;
+
+  .action-label{
+    border: 5px solid #FFFFFF;
+    @include border-radius(5px);
+    @include user-select(none);
+    width: 100%;
+    height: 81px;
+    color: #FFFFFF;
+    font-size: 45px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+
+    &.selected{
+      border-color: #000000;
+    }
+
+    &.ga-t{
+      background: $primary-button-color;
+      @include shadow(-2px 5px 41px -6px rgba(0, 0, 0, 0.48));
+    }
+
+    &.ga-g{
+    background: $secondary-button-color;
+    }
+  }
+
+  .action-identifier{
+    display: block;
+    @include border-radius(20px);
+    background: #000000;
+    color: $primary-text-color;
+    padding: 8px 0px;
+    font-weight: bold;
+
+  }
+  .blur{
+    opacity: 0.4;
+  }
+}
+.game-footer{
+  background: $game-body-color;
+  padding-bottom: 20px;
+}
+
+.setting-wrapper {
+  display: flex;
+  justify-content: space-around;
+
+  li {
+    list-style-type: none;
+    width: 25%;
+    cursor: pointer;
+
+    span {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 900;
+    }
+  }
+
+  .setting-box {
+    background: $primary-text-color;
+    border: 2px solid $lightGreen;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 80%;
+
+    .fa {
+      font-size: 54px;
+      color: $green;
+      justify-content: center;
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,269 @@
+.game-room{
+
+  .heading{
+    text-align: center;
+
+    h5 {
+      color: #FFFFFF;
+      margin: 20px;
+      font-weight: 900;
+    }
+  }
+
+  .search{
+    margin: 50px 0px 0px;
+  }
+
+  .player-list{
+    margin: 0 auto;
+
+    .table{
+      tr{
+        background: #FFFFFF;
+
+        td{
+
+          &:first-of-type {
+            color: $secondary-button-color;
+          }
+
+          span {
+            text-align: left;
+            font-weight: 900;
+
+            img {
+              @include shadow(-2px 5px 41px -6px rgba(0,0,0,0.48));
+            }
+
+          }
+        }
+      }
+
+      .add-player {
+        background: $green;
+
+        td {
+
+          span {
+            color: $lightGreen;
+          }
+        }
+      }
+    }
+
+    .img-circle{
+      width: 40px;
+      @include border-radius(20px)
+    }
+  }
+
+  .remove{
+    border: 0px;
+    background: none;
+    outline: none;
+    cursor: pointer;
+
+    .fa{
+      color:$primary-button-color;
+    }
+  }
+
+  .start-game{
+    padding: 12px 30px;
+    font-size: 12px;
+    @include border-radius(25px);
+
+    &:disabled{
+      opacity: 0.3;
+    }
+    &:disabled:hover{
+      cursor: not-allowed;
+    }
+  }
+}
+.game-body{
+  background: $game-body-color;
+  padding:33px 0px;
+}
+
+.game-table {
+  border: 5px solid $primary-button-color;
+  @include border-radius(115px);
+  padding: 41px 60px;
+  margin: 20px 0px;
+  background: $primary-text-color;
+
+  .player-move{
+
+    .name{
+      font-size: 12px;
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      margin: 0px 0px 10px;
+    }
+
+    .image{
+      display: block;
+      max-width: 80px;
+      min-height: 80px;
+      font-size: 46px;
+      color: #ffffff;
+      margin: auto;
+    }
+    .text{
+      display: block;
+      margin: 10px 0px 0px;
+      text-align: center;
+    }
+    .has-choosen{
+      .image{
+          @include border-radius(10px);
+          border: 5px solid #ffffff;
+          @include shadow(-2px 5px 41px -6px rgba(0,0,0,0.48));
+      }
+      .text {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+    }
+    .action-T{
+      .image{
+        background: $bgcolor;
+      }
+      .text {
+          color: $bgcolor;
+      }
+    }
+
+    .action-G{
+      .image{
+        background: $secondary-button-color;
+      }
+      .text {
+        color: $secondary-button-color;
+      }
+    }
+    .no-action{
+      .image{
+        background-color: $bgcolor;
+        @include border-radius(5px);
+        border: 2px dotted $game-body-color;
+      }
+      .text {
+        font-size: 14px;
+        color: $bgcolor;
+      }
+    }
+  }
+}
+
+.vertical-middle {
+  transform: translate(0%, 30%);
+}
+
+.modal-content {
+  padding: 30px 0px;
+
+  .headerTitle {
+    background: $secondary-button-color;
+    color: $primary-text-color;
+    font-weight: 900;
+    font-size: 22px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 60%;
+    border: 4px solid $primary-text-color;
+    border-radius: 5px;
+    @include shadow(-2px 5px 41px -6px rgba(0,0,0,0.48));
+    position: relative;
+    top: -65px;
+  }
+
+  .modal-text {
+    color: $green;
+    text-align: center;
+    font-weight: 700;
+    margin-top: -40px;
+  }
+}
+
+.center-align {
+  margin: 0 auto;
+}
+
+.search-icon-wrapper {
+  background: none;
+
+  #basic-addon1 {
+    background: $primary-text-color;
+    border: none;
+
+    .fa-search {
+      font-size: 24px;
+      color: $green;
+    }
+  }
+}
+
+.search-player {
+  border: none;
+  outline: none;
+}
+
+.chat-box {
+  background: $lightGreen;
+  color: $primary-text-color;
+  border-radius: 10px;
+  padding: 20px 30px;
+  max-height: 250px;
+  overflow: hidden;
+  width: 390px;
+  margin: 0px;
+  font-size: 14px;
+
+  .entry {
+    padding-bottom: 10px;
+  }
+
+  .messageBox {
+    max-height: 150px;
+    overflow-y: scroll;
+    padding: 10px 0px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #FF0000;
+  }
+
+  input {
+    background: #002E1D;
+    color: #045940;
+    border: 4px solid #045940;
+    border-radius: 7px;
+    padding: 0px 25px;
+    outline: none;
+  }
+
+  button {
+    background: $secondary-button-color;
+    border: none;
+
+    i {
+      position: relative;
+      top: 4px;
+    }
+  }
+}
+
+.chat-title {
+  text-align: left;
+
+}

@@ -1,0 +1,405 @@
+.modal-dialog {
+  max-width: 950px;
+}
+
+.modal-content {
+  padding: 0;
+}
+
+.modal-body {
+  padding: 50px 60px;
+}
+
+.modal-header {
+  background-color: $lightGreen3;
+  padding: 20px 50px;
+
+  h5 {
+    font-weight: 900;
+    color: $primary-text-color;
+    text-transform: uppercase;
+  }
+}
+
+.close {
+  font-size: 2rem;
+  font-weight: normal;
+  color: $primary-text-color;
+  opacity: 100;
+}
+
+.right-border {
+  border-right: 1px solid $lightGrey;
+}
+
+.modal-content-wrapper{
+  
+  h5 {
+    color: $lightGreen;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .content-subtitle {
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+.modal-inner-content {
+  padding-left: 20px;
+}
+
+.payoffs-list {
+
+  ul {
+    display: flex;
+    padding-left: 0;
+    padding-bottom: 15px;
+
+    li {
+      padding: 0px 10px;
+
+      &:first-of-type {
+        padding-left: 0px;
+      }
+
+      p {
+        font-weight: 700;
+      }
+
+    }
+  }
+
+  .list-wrapper {
+    border-bottom: 1px solid $lightGrey;
+    padding: 35px 0px 0px 0px;
+    max-width: 85%;
+    margin-left: 35px;
+
+    &:last-of-type {
+      border: none;
+    }
+
+    ul{
+
+      &:first-of-type {
+
+        li {
+
+          &:first-of-type {
+            color: $green;
+          }
+        }
+      }
+
+      &:nth-of-type(2n) {
+
+        li {
+
+          &:first-of-type {
+            color: $secondary-button-color;
+          }
+        }
+      }
+
+      li {
+        width: auto;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .box-text-T{
+    color: $green;
+    margin-left: 15px;
+  }
+
+  .box-text-G {
+    color: $secondary-button-color;
+    margin-left: 15px;
+  }
+}
+
+.payoffs-box {
+  padding: 10px 15px;
+  color: $primary-text-color;
+  border: 3px solid $primary-text-color;
+  font-weight: 900;
+  border-radius: 3px;
+  @include shadow(-2px 5px 41px -6px rgba(0,0,0,0.48));
+}
+
+.T {
+  background: $lightGreen;
+}
+
+.G {
+  background: $secondary-button-color;
+}
+
+.how-to-play {
+  padding-left: 0px;
+
+  .payoffs-box {
+    padding:30px 45px;
+    margin-right: 10px;
+    font-size: 44px;
+    border: 5px solid #ffffff;
+  }
+
+  ul {
+
+    li {
+
+      &:first-of-type {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .choose-move {
+    padding-bottom: 50px;
+
+    ul {
+
+      li {
+
+        &:nth-of-type(2n) {
+          padding: 45px 0px;
+        }
+      }
+    }
+  }
+}
+
+.result {
+  padding-left: 0px;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    box-shadow: none;
+    background: $lightGreen2;
+    margin: 10px 15px;
+    
+    &:nth-of-type(2) {
+      
+      div {
+        
+        &:first-of-type, &:last-of-type {
+          color: $lightGreen;
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+
+      div {
+
+        &:first-of-type {
+          color: $secondary-button-color;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+
+      div {
+
+        &:first-of-type {
+          color: $green;
+        }
+      }
+    }
+
+    div {
+      font-weight: 700;
+      padding: 0px 20px;
+      text-align: left;
+      font-size: 12px;
+
+      &:nth-of-type(2) {
+        background: $green;
+        border-radius: 100%;
+        width: 20px;
+        height: 39px;
+        @include shadow(-2px 5px 41px -6px rgba(0,0,0,0.48));
+      }
+
+      &:nth-of-type(3n) {
+        color: $black;
+      }
+
+      &:last-of-type {
+        color: $black;
+        font-size: 20px;
+        position: absolute;
+        right: 25px;
+      }
+    }
+  }
+
+  .me {
+    @include shadow(1px 5px 20px -2px rgba(0, 0, 0, 0.1));
+    padding: 10px 0px;
+    margin: 10px 0px;
+
+    div {
+      text-transform: none;
+      font-size: 14px;
+
+      &:last-of-type {
+        color: $secondary-button-color;
+        font-size: 24px;
+        right: 15px;
+      }
+    }
+  }
+}
+
+.scoreboard-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+
+  ul {
+    padding-left: 0px;
+
+    > li {
+      display: flex;
+      align-items: center;
+      padding: 15px 0px;
+      box-shadow: none;
+      background: $lightGreen2;
+      margin: 10px 0px;
+
+      &:first-of-type {
+
+        div {
+
+          &:first-of-type, &:last-of-type {
+            color: $secondary-button-color;
+            font-size: 30px;
+          }
+        }
+      }
+
+      &:nth-of-type(2) {
+
+        div {
+
+          &:first-of-type {
+            color: $lightGreen;
+            font-size: 24px;
+          }
+
+          &:last-of-type {
+            color: $lightGreen;
+          }
+        }
+      }
+
+
+       &:nth-of-type(even) {
+          background: $lightGreen2;
+        }
+
+       &:nth-of-type(odd) {
+        background: $lightGrey2;
+      }
+
+      &:nth-of-type(3) {
+
+        div {
+           &:first-of-type {
+             color: $black;
+           }
+        }
+      }
+
+      div {
+        color: $black;
+        font-weight: 900;
+        font-size: 20px;
+        padding: 0px 20px;
+
+        &:first-of-type {
+          color: $lightGrey3;
+        }
+
+        &:nth-of-type(2) {
+          background: $green;
+          border-radius: 100%;
+          height: 65px;
+          width: 65px;
+          border: 4px solid $primary-text-color;
+          @include shadow(-2px 5px 41px -6px rgba(0,0,0,0.48));
+        }
+
+        &:last-of-type {
+          position: absolute;
+          right: 175px;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+.move-history-wrapper {
+
+  table {
+    width: 100%;
+
+    thead {
+      background: $lightGreen4;
+
+      tr {
+
+        td {
+          padding: 15px 30px;
+          color: $primary-text-color;
+          font-weight: 700;
+
+        }
+      }
+    }
+
+    tbody {
+
+      tr {
+
+        &:nth-of-type(odd) {
+          background: $lightGreen2;
+        }
+
+        td {
+          padding: 15px 30px;
+          font-weight: 700;
+
+          tr {
+
+            td {
+              padding: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .take {
+    color: $lightGreen;
+  }
+
+  .give {
+    color: $secondary-button-color;
+  }
+}

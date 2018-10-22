@@ -1,0 +1,19 @@
+@media only screen and (max-width: 991px) {
+
+  .scoreboard-wrapper {
+
+    ul {
+
+      > li {
+
+        div {
+          padding: 0px 30px;
+
+          &:last-of-type {
+            right: 90px;
+          }
+        }
+      }
+    }
+  }
+}

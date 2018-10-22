@@ -1,0 +1,12 @@
+    background: #045940;
+    padding: 5px;
+    border-radius: 20px;
+    border: 3px solid #002E1D;
+
+
+    loader col-sm-10
+
+
+    timer-wrapper {
+        padding: 20px 0px;
+    }

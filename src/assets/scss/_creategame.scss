@@ -1,0 +1,44 @@
+.create-game{
+
+  color: $primary-text-color;
+
+  .heading{
+    margin: 50px 0px;
+    text-align: center;
+  }
+
+  .selector{
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    padding: 18px 0px;
+    min-width: 300px;
+    border: 3px solid #ffffff;
+    user-select: none;
+    @include border-radius($default-border-radius);
+    @include user-select;
+
+    &.three-p{
+      background: $primary-button-color;
+    }
+
+    &.five-p{
+      background: $secondary-button-color;
+    }
+
+    &.selected{
+      border-color: #0b2e13;
+    }
+
+    span{
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+
+  .start-game{
+    padding: 15px 45px;
+    font-size: 16px;
+    @include border-radius(20px);
+  }
+}

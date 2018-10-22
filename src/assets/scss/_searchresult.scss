@@ -1,0 +1,29 @@
+.search{
+  position: relative;
+}
+.search-result{
+  position: absolute;
+  z-index: 1;
+  left: 25%;
+
+
+  ul.list-group{
+
+    .list-group-item{
+      .img{
+        width: 40px;
+        @include border-radius(20px)
+      }
+    }
+  }
+}
+
+.p-tag {
+  color: $secondary-button-color;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.result-player-tag {
+  font-weight: 900;
+}

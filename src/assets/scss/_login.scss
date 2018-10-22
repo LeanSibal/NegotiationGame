@@ -1,0 +1,16 @@
+.parentWrapper{
+  position: relative;
+}
+.login-form{
+  max-width: 500px;
+  margin:auto;
+  padding:10px;
+  background:#fff;
+  @include border-radius($default-border-radius);
+  flex: 1;
+  @include transform(translate(0, 50%));
+
+  .row{
+    margin: 10px 0px;
+  }
+}

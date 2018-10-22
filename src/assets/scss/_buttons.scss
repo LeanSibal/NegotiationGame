@@ -1,0 +1,22 @@
+//css for all button styles
+
+.btn-round {
+  outline: none;
+  border: none;
+  color: $primary-text-color;
+  border-radius: 20px;
+  width: 60%;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  @include appearance(none);
+}
+
+.btn-black {
+  background: $black;
+}
+
+.btn-grey {
+  background: $lightGrey;
+}
