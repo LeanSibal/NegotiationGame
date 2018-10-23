@@ -17,7 +17,7 @@ class Timer extends Component{
 
     startTimer() {
 
-        let countDownDate = new Date(this.props.currentDate).getTime() + 2 * 60000;
+        let countDownDate = new Date(this.props.currentDate).getTime() + (2 * 60000) + 30000;
         let $root = this;
         let x = setInterval(function() {
 
@@ -26,13 +26,24 @@ class Timer extends Component{
             let minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((interval % (1000 * 60)) / 1000);
 
-            $root.setState({
-                countdown: minutes + ":" + seconds
-            });
+            if(minutes == 2 && seconds > 0){
+                $('#roundTimer').modal();
+                $('#roundTimer').find('h3').html('00:' + seconds);
+            }else{
 
-            if (interval < 0) {
+                if (interval > 1) {
+                    $root.setState({
+                        countdown: minutes + ":" + seconds
+                    });
+                }
+
+                $('#roundTimer').modal('hide');
+            }
+
+
+            if (interval < 1) {
                 clearInterval(x);
-                //$root.nextRoundHandle();
+                $root.nextRoundHandle();
             }
         }, 1000);
     }

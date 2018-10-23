@@ -163,8 +163,10 @@
   transform: translate(0%, 30%);
 }
 
-.modal-content {
+#modal-timer {
   padding: 30px 0px;
+  width: 60%;
+  margin: 0 auto;
 
   .headerTitle {
     background: $secondary-button-color;
